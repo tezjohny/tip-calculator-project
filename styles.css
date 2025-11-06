@@ -113,9 +113,23 @@ label {
 .total-amount, .total-amount-person {
     color: var(--Strong-cyan);
     font-size: 2rem;
+    text-align: right;
+    display: inline-block;
+    min-width: 8ch;
 }
 small {
     color: var(--dark-grayish-cyan);
+}
+.error {
+    color: rgb(185, 122, 39);
+    margin-bottom: 1rem;
+    display: none;
+}
+.error.active {
+    display: block;
+}
+.error-container {
+    justify-content: space-between;
 }
 /* ui elements */
 #billInput {
@@ -149,6 +163,10 @@ small {
 }
 .select-tip-button:hover {
     background: var(--Strong-cyan);
+}
+.select-tip-button.active {
+    background: var(--Strong-cyan);
+    color: var(--very-dark-cyan);
 }
 
 /* layout styles */
@@ -194,7 +212,7 @@ small {
 
 .small-total {
     justify-content: space-between;
-    gap: 7rem;
+    gap: 2rem;
 }
 .small-total:nth-of-type(2) {
     margin-top: 2rem;
