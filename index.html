@@ -24,18 +24,21 @@
                     <label for="select-tip">Select Tip %</label>
 
                     <div class="grid select-buttons">
-                        <button class="select-tip-button">5%</button>
-                        <button class="select-tip-button">10%</button>
-                        <button class="select-tip-button">15%</button>
-                        <button class="select-tip-button">25%</button>
-                        <button class="select-tip-button">50%</button>
+                        <button class="select-tip-button" type="button">5%</button>
+                        <button class="select-tip-button" type="button">10%</button>
+                        <button class="select-tip-button" type="button">15%</button>
+                        <button class="select-tip-button" type="button">25%</button>
+                        <button class="select-tip-button" type="button">50%</button>
                         <input type="number" name="custom-input" id="custom-input" placeholder="Custom"
                         class="custom-input">
                     </div>
                 </div>
 
                 <div>
+                   <div class="error-container flex"> 
                     <label for="peopleInput">Number of People</label>
+                    <p class="error">Can't be zero</p> 
+                </div>
                     <input type="number" name="number-of-people" id="peopleInput" placeholder="0">
                 </div>
             </form>
@@ -60,5 +63,8 @@
              </div>
         </div>
     </main>
+
+<script src="indexs.js"></script>
+
 </body>
 </html>
