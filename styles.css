@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 /* root */
@@ -87,8 +88,11 @@ body{
     color: var(--very-dark-cyan);
     padding: .5rem 0;
     background: var(--light-grayish-cyan);
+    overflow-x: hidden;
 }
 /* helper Classes */
+
+
 .grid {
     display: grid;
 }
@@ -161,6 +165,11 @@ small {
 .reset-btn:hover {
     opacity: 100%;
 }
+
+.reset-btn:disabled {
+  cursor: not-allowed;
+}
+
 .select-tip-button:hover {
     background: var(--Strong-cyan);
 }
@@ -170,7 +179,8 @@ small {
 }
 
 /* layout styles */
- .tip-container{
+ 
+.tip-container{
     display: grid;
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -225,6 +235,7 @@ small {
         max-width: 50rem;
         margin-inline: auto;
         grid-template-columns: repeat(2, 1fr);
+        box-sizing: border-box;
     }
     
     .select-buttons {
