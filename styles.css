@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 /* root */
@@ -42,8 +41,18 @@ input[type="number"] {
     padding-left: 2rem;
     margin-bottom: 2rem;
     text-align: right;
+    font-variant-numeric: tabular-nums;
     border: 1px solid var(--Strong-cyan);
     background-color: var(--very-light-grayish-cyan) !important;
+}
+input:focus {
+  outline: none;
+  border: 2px solid var(--Strong-cyan);
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 #custom-input {
@@ -90,9 +99,8 @@ body{
     background: var(--light-grayish-cyan);
     overflow-x: hidden;
 }
+
 /* helper Classes */
-
-
 .grid {
     display: grid;
 }
@@ -100,6 +108,7 @@ body{
     display: flex;
     align-items: center;
 }
+
 /* typography/text styles */
 .title{
     text-align: center;
@@ -135,6 +144,7 @@ small {
 .error-container {
     justify-content: space-between;
 }
+
 /* ui elements */
 #billInput {
     background: url(./assets/images/icon-dollar.svg) no-repeat;
@@ -186,7 +196,6 @@ small {
 }
 
 /* layout styles */
- 
 .tip-container{
     display: grid;
     grid-template-columns: 1fr;
@@ -199,16 +208,15 @@ small {
     border-bottom-right-radius: 2rem;
  }
 
-
- .total-container {
+.total-container {
     gap: 3rem;
     color: var(--white);
     padding: 1.75rem;
     border-radius: 1rem;
     background: var(--very-dark-cyan);
- } 
+} 
  
- .results-box {
+.results-box {
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -223,7 +231,6 @@ small {
 }
 
 /* media query */
-
 @media screen and (min-width: 650px){
     .tip-container {
         max-width: 50rem;
@@ -240,5 +247,26 @@ small {
         align-items: initial;
         flex-direction: column;
         justify-content: space-between;
-    }
+    }  
+}
+
+/* === SCROLL FIX (PERMANENT) === */
+html, body {
+    height: 100%;
+    overflow: hidden; /* completely stops scroll */
+}
+
+main, .tip-container, .total-container {
+    overflow: hidden; /* prevent layout scroll jumps */
+}
+
+input[type="number"] {
+    overflow: hidden;
+    caret-color: var(--very-dark-cyan);
+    -webkit-text-size-adjust: 100%;
+    touch-action: manipulation; /* stops mobile zoom/scroll focus */
+}
+
+*:focus {
+    scroll-behavior: auto !important;
 }
