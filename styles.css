@@ -170,6 +170,13 @@ small {
   cursor: not-allowed;
 }
 
+.select-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+    align-items: stretch; 
+}
 .select-tip-button:hover {
     background: var(--Strong-cyan);
 }
@@ -191,20 +198,7 @@ small {
     border-bottom-left-radius: 2rem;
     border-bottom-right-radius: 2rem;
  }
-/*
- .select-buttons {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    margin-bottom: 2rem;
- }
-    */
-.select-buttons {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    margin-bottom: 2rem;
-    align-items: stretch; 
-}
+
 
  .total-container {
     gap: 3rem;
