@@ -4,7 +4,7 @@ const peopleInput = document.getElementById("peopleInput");
 const tipInputButtons = document.querySelectorAll(".select-tip-button");
 const customTipInput = document.getElementById("custom-input");
 const resetBtn = document.querySelector(".reset-btn");
-const errorMsg = document.querySelector(".error"); // <-- your error paragraph
+const errorMsg = document.querySelector(".error");
 
 // get results elements
 const totalAmount = document.querySelector(".total-amount");

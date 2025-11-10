@@ -252,8 +252,12 @@ small {
 
 /* === SCROLL FIX (PERMANENT) === */
 html, body {
-    height: 100%;
-    overflow: hidden; /* completely stops scroll */
+    overflow: hidden;
+    height: auto;
+    min-height: 100%;
+    overflow-x: hidden; /* no sideways scroll */
+    overflow-y: auto; 
+    /* completely stops scroll */
 }
 
 main, .tip-container, .total-container {
