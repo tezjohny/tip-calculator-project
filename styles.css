@@ -55,8 +55,11 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 0;
 }
 
+/* === FIXED CUSTOM INPUT ICON ALIGNMENT === */
 #custom-input {
-    background: var(--very-light-grayish-cyan);
+    background: var(--very-light-grayish-cyan) url("./assets/images/percentagess.svg") no-repeat;
+    background-position: 2% 50%; /* same as bill/people */
+    background-size: 1.2rem; /* consistent icon size */
     color: var(--very-dark-cyan);
     border: none;
     margin: 0;                    
@@ -66,10 +69,9 @@ input[type=number]::-webkit-outer-spin-button {
     border-radius: .2rem;
     height: 100%;
     box-sizing: border-box;
-    padding: 0;
     text-align: right !important;
-    padding-right: 1rem;
-    line-height: 3rem;
+    padding: 0.5rem 1rem 0.5rem 2.5rem; /* same padding as bill/people */
+    line-height: 1.5rem;
     transition: border 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -202,10 +204,7 @@ small {
     gap: 2rem;
     background: var(--white);
     padding: 1.75rem;
-    border-top-left-radius: 2rem;
-    border-top-right-radius: 2rem;
-    border-bottom-left-radius: 2rem;
-    border-bottom-right-radius: 2rem;
+    border-radius: 2rem;
  }
 
 .total-container {
@@ -255,20 +254,19 @@ html, body {
     overflow: hidden;
     height: auto;
     min-height: 100%;
-    overflow-x: hidden; /* no sideways scroll */
+    overflow-x: hidden;
     overflow-y: auto; 
-    /* completely stops scroll */
 }
 
 main, .tip-container, .total-container {
-    overflow: hidden; /* prevent layout scroll jumps */
+    overflow: hidden;
 }
 
 input[type="number"] {
     overflow: hidden;
     caret-color: var(--very-dark-cyan);
     -webkit-text-size-adjust: 100%;
-    touch-action: manipulation; /* stops mobile zoom/scroll focus */
+    touch-action: manipulation;
 }
 
 *:focus {
