@@ -22,7 +22,7 @@ function handleError() {
   if (!people || people <= 0) {
     errorMsg.classList.add("active");
     peopleInput.style.border = "2px solid rgb(185, 122, 39)";
-    return true; // error exists
+    return true;
   } else {
     errorMsg.classList.remove("active");
     peopleInput.style.border = "none";
