@@ -45,21 +45,22 @@ input[type="number"] {
     border: 1px solid var(--Strong-cyan);
     background-color: var(--very-light-grayish-cyan) !important;
 }
+
 input:focus {
   outline: none;
   border: 2px solid var(--Strong-cyan);
 }
+
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-/* === FIXED CUSTOM INPUT ICON ALIGNMENT === */
 #custom-input {
     background: var(--very-light-grayish-cyan) url("./assets/images/percentagess.svg") no-repeat;
-    background-position: 2% 50%; /* same as bill/people */
-    background-size: 1.2rem; /* consistent icon size */
+    background-position: 2% 50%;
+    background-size: 1.2rem;
     color: var(--very-dark-cyan);
     border: none;
     margin: 0;                    
@@ -70,7 +71,7 @@ input[type=number]::-webkit-outer-spin-button {
     height: 100%;
     box-sizing: border-box;
     text-align: right !important;
-    padding: 0.5rem 1rem 0.5rem 2.5rem; /* same padding as bill/people */
+    padding: 0.5rem 1rem 0.5rem 2.5rem;
     line-height: 1.5rem;
     transition: border 0.2s ease, box-shadow 0.2s ease;
 }
@@ -125,7 +126,7 @@ label {
     color: var(--dark-grayish-cyan);
     margin-bottom: 1rem;
 }
-.total-amount, .total-amount-person {
+.tip-amount, .total-amount-person {
     color: var(--Strong-cyan);
     font-size: 2rem;
     text-align: right;
@@ -249,26 +250,92 @@ small {
     }  
 }
 
-/* === SCROLL FIX (PERMANENT) === */
-html, body {
-    overflow: hidden;
-    height: auto;
-    min-height: 100%;
-    overflow-x: hidden;
-    overflow-y: auto; 
+/* ANIMATIONS*/
+
+/* Smooth fade-in for whole app */
+main {
+    animation: fadeIn 0.6s ease-out;
 }
 
-main, .tip-container, .total-container {
-    overflow: hidden;
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(15px);
+    } 
+
+
+    to   { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
 }
 
-input[type="number"] {
-    overflow: hidden;
-    caret-color: var(--very-dark-cyan);
-    -webkit-text-size-adjust: 100%;
-    touch-action: manipulation;
+/* Inputs slide-up */
+input[type="number"],
+#custom-input {
+    animation: slideUp 0.5s ease-out;
 }
 
-*:focus {
-    scroll-behavior: auto !important;
+@keyframes slideUp {
+    from { 
+        opacity: 0; 
+        transform: translateY(12px); 
+    }
+    to   {
+         opacity: 1; 
+         transform: translateY(0); 
+    }
+}
+
+/* Tip buttons scale on hover */
+.select-tip-button {
+    transition: transform .15s ease-out;
+}
+
+.select-tip-button:hover {
+    transform: scale(1.05);
+}
+
+/* Tip button pop when active */
+.select-tip-button.active {
+    animation: pop 0.22s ease-out;
+}
+
+@keyframes pop {
+    0%   { transform: scale(0.92); }
+    70%  { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Inputs glow softly on focus */
+input[type="number"]:focus,
+#custom-input:focus {
+    box-shadow: 0 0 6px rgba(0, 255, 200, 0.35);
+    transition: box-shadow .2s ease-in-out;
+}
+
+/* Reset button hover effect */
+.reset-btn:hover {
+    transform: translateY(-2px);
+    transition: transform .2s ease-out;
+}
+
+/* Result values pop when updated */
+.total-amount,
+.total-amount-person {
+    animation: numberPop 0.25s ease-out;
+}
+
+@keyframes numberPop {
+    0%   { 
+        transform: scale(0.93); 
+        opacity: 0.7; 
+    }
+    60%  { 
+        transform: scale(1.05); 
+        opacity: 1; 
+    }
+    100% { 
+        transform: scale(1); 
+    }
 }

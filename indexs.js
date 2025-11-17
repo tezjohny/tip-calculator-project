@@ -6,14 +6,14 @@ const customTipInput = document.getElementById("custom-input");
 const resetBtn = document.querySelector(".reset-btn");
 const errorMsg = document.querySelector(".error");
 
-// get results elements
-const totalAmount = document.querySelector(".total-amount");
-const totalAmountPerPerson = document.querySelector(".total-amount-person");
+// get results elements (fixed class names to match HTML)
+const tipAmount = document.querySelector(".tip-amount");
+const totalPerPersonAmount = document.querySelector(".total-amount-person");
 
 // function to update results
-function updateResults(tipAmount, totalAmountValue) {
-  totalAmount.textContent = `$${tipAmount.toFixed(2)}`;
-  totalAmountPerPerson.textContent = `$${totalAmountValue.toFixed(2)}`;
+function updateResults(tipValue, totalValue) {
+  tipAmount.textContent = `$${tipValue.toFixed(2)}`;
+  totalPerPersonAmount.textContent = `$${totalValue.toFixed(2)}`;
 }
 
 // function to show or hide error message
@@ -22,7 +22,7 @@ function handleError() {
   if (!people || people <= 0) {
     errorMsg.classList.add("active");
     peopleInput.style.border = "2px solid rgb(185, 122, 39)";
-    return true; // means there is an error
+    return true; // error exists
   } else {
     errorMsg.classList.remove("active");
     peopleInput.style.border = "none";
@@ -32,7 +32,7 @@ function handleError() {
 
 // function to calculate based on active tip button
 function calculateActiveButtonTip() {
-  if (handleError()) return; // stop if error exists
+  if (handleError()) return;
 
   const activeButton = document.querySelector(".select-tip-button.active");
   if (!activeButton) return;
@@ -46,27 +46,26 @@ function calculateActiveButtonTip() {
     return;
   }
 
-  const tipAmount = (amount * tipPercentage) / people;
-  const totalAmountValue = amount / people + tipAmount;
-  updateResults(tipAmount, totalAmountValue);
+  const tipValue = (amount * tipPercentage) / people;
+  const totalValue = amount / people + tipValue;
+  updateResults(tipValue, totalValue);
 }
 
 // handle preset tip buttons
-tipInputButtons.forEach((inputButton) => {
-  inputButton.addEventListener("click", (e) => {
+tipInputButtons.forEach((button) => {
+  button.addEventListener("click", (e) => {
     e.preventDefault();
 
-    // toggle active state — if already active, unselect and reset
-    if (inputButton.classList.contains("active")) {
-      inputButton.classList.remove("active");
+    // toggle active state
+    if (button.classList.contains("active")) {
+      button.classList.remove("active");
       updateResults(0, 0);
       return;
     }
 
-    // activate this button and clear custom input
     tipInputButtons.forEach((btn) => btn.classList.remove("active"));
     customTipInput.value = "";
-    inputButton.classList.add("active");
+    button.classList.add("active");
 
     calculateActiveButtonTip();
   });
@@ -112,19 +111,18 @@ function calculateCustomTip() {
     return;
   }
 
-  const customTip = (amount * customTipPercentage) / people;
-  const totalAmountValue = amount / people + customTip;
-  updateResults(customTip, totalAmountValue);
+  const tipValue = (amount * customTipPercentage) / people;
+  const totalValue = amount / people + tipValue;
+  updateResults(tipValue, totalValue);
 }
 
 // reset all fields and results
 resetBtn.addEventListener("click", () => {
-  totalAmount.textContent = "$0.00";
-  totalAmountPerPerson.textContent = "$0.00";
   billInput.value = "";
   peopleInput.value = "";
   customTipInput.value = "";
   tipInputButtons.forEach((btn) => btn.classList.remove("active"));
   errorMsg.classList.remove("active");
   peopleInput.style.border = "none";
+  updateResults(0, 0); 
 });
